@@ -248,4 +248,4 @@ MIT License - ver [LICENSE](LICENSE) para detalles.
 
 ⭐ **¡Dale una estrella si este proyecto te impresiona!**
 
-> *"El futuro del onboarding bancario no es mañora. Es ahora."*
+> *"El futuro del onboarding bancario no es mañora. Es ahora."*# kyc
