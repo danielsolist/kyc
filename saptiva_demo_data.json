@@ -1,0 +1,155 @@
+{
+  "demo_cases": [
+    {
+      "case_id": "SAPTIVA_PREMIUM_001",
+      "profile": "Cliente Premium - Ejecutiva Senior",
+      "customer_data": {
+        "customer_id": "SAPTIVA_DEMO_001",
+        "personal_info": {
+          "name": "María Elena Vásquez Hernández",
+          "id_number": "CURP890123MDFVSR09",
+          "birth_date": "1989-01-23",
+          "address": "Av. Santa Fe 495, Santa Fe, CDMX 01210",
+          "phone": "+52 55 5555 0001",
+          "email": "maria.vasquez@corporativo.com"
+        }
+      },
+      "expected_result": {
+        "approved": true,
+        "risk_level": "low",
+        "score_range": "0.85-0.95",
+        "saptiva_features": ["OCR", "NLP", "ML_Risk_Assessment", "Identity_Verification"]
+      }
+    },
+    {
+      "case_id": "SAPTIVA_YOUNG_002", 
+      "profile": "Cliente Joven - Estudiante Universitario",
+      "customer_data": {
+        "customer_id": "SAPTIVA_DEMO_002",
+        "personal_info": {
+          "name": "Carlos Alberto Mendoza Ruiz",
+          "id_number": "CURP020815HDFMNR03",
+          "birth_date": "2002-08-15",
+          "address": "Calle Universidad 45, Del Valle, CDMX 03100",
+          "phone": "+52 55 5555 0002",
+          "email": "carlos.mendoza@universidad.edu.mx"
+        }
+      },
+      "expected_result": {
+        "approved": true,
+        "risk_level": "medium",
+        "score_range": "0.60-0.75",
+        "saptiva_features": ["Age_Validation", "Student_Profile_Analysis", "Predictive_Scoring"]
+      }
+    },
+    {
+      "case_id": "SAPTIVA_INTERNATIONAL_003",
+      "profile": "Cliente Internacional - Empresaria Colombiana", 
+      "customer_data": {
+        "customer_id": "SAPTIVA_DEMO_003",
+        "personal_info": {
+          "name": "Ana Sofia Restrepo Cardenas",
+          "id_number": "CURP850420MDFSTR07",
+          "birth_date": "1985-04-20",
+          "address": "Av. Presidente Masaryk 111, Polanco, CDMX 11560",
+          "phone": "+52 55 5555 0003",
+          "email": "ana.restrepo@empresa.com.co"
+        }
+      },
+      "expected_result": {
+        "approved": true,
+        "risk_level": "low",
+        "score_range": "0.80-0.90",
+        "saptiva_features": ["International_Validation", "Business_Profile", "Cross_Border_Analysis"]
+      }
+    },
+    {
+      "case_id": "SAPTIVA_HIGH_RISK_004",
+      "profile": "Cliente Alto Riesgo - Historial Complejo",
+      "customer_data": {
+        "customer_id": "SAPTIVA_DEMO_004", 
+        "personal_info": {
+          "name": "Roberto Silva Morales",
+          "id_number": "CURP750310HDFSLR08",
+          "birth_date": "1975-03-10",
+          "address": "Calle Insurgentes 234, Roma Norte, CDMX 06700",
+          "phone": "+52 55 5555 0004",
+          "email": "roberto.silva@email.com"
+        }
+      },
+      "expected_result": {
+        "approved": false,
+        "risk_level": "high", 
+        "score_range": "0.30-0.50",
+        "saptiva_features": ["Risk_Pattern_Detection", "Fraud_Analysis", "Behavioral_Scoring"]
+      }
+    },
+    {
+      "case_id": "SAPTIVA_SENIOR_005",
+      "profile": "Cliente Senior - Jubilado con Patrimonio",
+      "customer_data": {
+        "customer_id": "SAPTIVA_DEMO_005",
+        "personal_info": {
+          "name": "Carmen Leticia Moreno Vega",
+          "id_number": "CURP551205MDFMRG04",
+          "birth_date": "1955-12-05",
+          "address": "Av. Las Lomas 789, Lomas de Chapultepec, CDMX 11000",
+          "phone": "+52 55 5555 0005",
+          "email": "carmen.moreno@patrimonio.mx"
+        }
+      },
+      "expected_result": {
+        "approved": true,
+        "risk_level": "low",
+        "score_range": "0.75-0.85",
+        "saptiva_features": ["Senior_Profile", "Wealth_Analysis", "Stability_Assessment"]
+      }
+    }
+  ],
+  "saptiva_capabilities": {
+    "ocr_features": [
+      "Document text extraction",
+      "Image quality assessment", 
+      "Multi-format support",
+      "Confidence scoring"
+    ],
+    "nlp_features": [
+      "Context understanding",
+      "Entity recognition",
+      "Semantic validation",
+      "Language processing"
+    ],
+    "ml_features": [
+      "Risk prediction",
+      "Pattern recognition", 
+      "Behavioral analysis",
+      "Fraud detection"
+    ],
+    "integration_features": [
+      "Real-time API",
+      "Batch processing",
+      "Webhook support",
+      "Custom models"
+    ]
+  },
+  "api_configuration": {
+    "api_key": "va-ai-7ZSCkAlaygy39P-H9lxQeRN3vyN81fuc07BZRQhJOe4w9XcBt3f-7QBt6fAIcJWYSXlIWEJCtOYZq1Qkxpg6G7JmA8UeKzoSlciYNe6tLh4",
+    "base_url": "https://api.saptiva.com/v1/chat/completions",
+    "embed_url": "https://api.saptiva.com/api/embed",
+    "models_used": [
+      "Saptiva OCR",
+      "Saptiva Guard", 
+      "Saptiva Ops",
+      "Saptiva KAL"
+    ],
+    "features_enabled": [
+      "OCR",
+      "NLP", 
+      "Document_Classification",
+      "Data_Extraction",
+      "Identity_Verification",
+      "Risk_Assessment",
+      "Fraud_Detection"
+    ]
+  }
+}
