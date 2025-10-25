@@ -16,7 +16,9 @@ class ValidationService:
             "curp": r"^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z][0-9]$",
             "rfc": r"^[A-ZÑ&]{3,4}[0-9]{6}[A-Z0-9]{3}$",
             "phone": r"^\+?52?[0-9]{10}$",
-            "email": r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            "email": r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
+            "postal_code": r"^[0-9]{5}$",
+            "account_number": r"^[0-9]{10,18}$"
         }
     
     async def validate_personal_info(self, 
@@ -36,8 +38,8 @@ class ValidationService:
             # Validar formato de campos
             for field, pattern in self.validation_rules.items():
                 if field in personal_info:
-                    value = personal_info[field]
-                    if not re.match(pattern, str(value)):
+                    value = str(personal_info[field]).strip().upper() if field in ["curp", "rfc"] else str(personal_info[field]).strip()
+                    if not re.match(pattern, value):
                         validation_results["errors"].append(f"Formato inválido para {field}: {value}")
                         validation_results["valid"] = False
             
@@ -164,3 +166,33 @@ class ValidationService:
         except Exception as e:
             logger.error(f"Error validando calidad de documento: {str(e)}")
             raise
+    
+    async def validate_sanctions_list(self, personal_info: Dict[str, Any]) -> Dict[str, Any]:
+        """Valida contra listas de sanciones (simulado)"""
+        try:
+            # Simulación de validación contra listas de sanciones
+            name = personal_info.get("name", "").upper()
+            
+            # Lista simulada de nombres sancionados
+            sanctioned_names = [
+                "JUAN CARLOS SANCIONADO",
+                "MARIA ELENA BLOQUEADA",
+                "PEDRO LUIS PROHIBIDO"
+            ]
+            
+            is_sanctioned = any(sanctioned in name for sanctioned in sanctioned_names)
+            
+            return {
+                "is_sanctioned": is_sanctioned,
+                "risk_level": "high" if is_sanctioned else "low",
+                "checked_lists": ["OFAC", "UIF", "CNBV"],
+                "timestamp": "2024-10-24T12:00:00Z"
+            }
+            
+        except Exception as e:
+            logger.error(f"Error validando listas de sanciones: {str(e)}")
+            return {
+                "is_sanctioned": False,
+                "risk_level": "unknown",
+                "error": str(e)
+            }

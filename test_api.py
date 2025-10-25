@@ -179,8 +179,9 @@ def main():
         print(f"❌ Unexpected error: {str(e)}")
 
 if __name__ == "__main__":
-    main()def 
-test_saptiva_tools():
+    main()
+
+def test_saptiva_tools():
     """Test Saptiva Tools endpoint"""
     print("🔧 Testing Saptiva Tools (Function Calling)...")
     
@@ -294,4 +295,80 @@ def test_rag_info():
         print(f"Regulatory Sources: {len(info['rag_system']['regulatory_sources'])}")
     else:
         print(f"❌ Error: {response.text}")
+    print()def t
+est_billing_pricing():
+    """Test billing pricing info"""
+    print("💲 Testing Saptiva Pricing Info...")
+    
+    response = requests.get(f"{BASE_URL}/billing/pricing-info")
+    print(f"Status: {response.status_code}")
+    
+    if response.status_code == 200:
+        info = response.json()
+        pricing = info['pricing_info']['saptiva_pricing']
+        print(f"✅ Pricing Info Retrieved!")
+        print(f"Models Available: {len(pricing)}")
+        print(f"Cheapest Model: Saptiva Embed ($0.01/M)")
+        print(f"Most Expensive: Saptiva Cortex ($0.30/$0.8/M)")
+    else:
+        print(f"❌ Error: {response.text}")
     print()
+
+def test_billing_log_usage():
+    """Test manual usage logging"""
+    print("📝 Testing Manual Usage Logging...")
+    
+    payload = {
+        "model": "Saptiva Turbo",
+        "input_tokens": 150,
+        "output_tokens": 75,
+        "operation": "test_kyc"
+    }
+    
+    response = requests.post(f"{BASE_URL}/billing/log-usage", json=payload)
+    print(f"Status: {response.status_code}")
+    
+    if response.status_code == 200:
+        result = response.json()
+        usage = result['logged_usage']
+        print(f"✅ Usage Logged Successfully!")
+        print(f"Model: {usage['model']}")
+        print(f"Total Cost: ${usage['total_cost']}")
+        print(f"Input Tokens: {usage['input_tokens']}")
+        print(f"Output Tokens: {usage['output_tokens']}")
+    else:
+        print(f"❌ Error: {response.text}")
+    print()
+
+def test_billing_session_summary():
+    """Test session billing summary"""
+    print("📊 Testing Session Billing Summary...")
+    
+    response = requests.get(f"{BASE_URL}/billing/session-summary")
+    print(f"Status: {response.status_code}")
+    
+    if response.status_code == 200:
+        result = response.json()
+        summary = result['billing_summary']['session_summary']
+        print(f"✅ Session Summary Retrieved!")
+        print(f"Total Cost: ${summary['total_cost']}")
+        print(f"Total Calls: {summary['total_calls']}")
+        print(f"Total Tokens: {summary['total_tokens']}")
+        print(f"Models Used: {summary['models_count']}")
+    else:
+        print(f"❌ Error: {response.text}")
+    print()
+
+def test_billing_model_comparison():
+    """Test model cost comparison"""
+    print("🔍 Testing Model Cost Comparison...")
+    
+    response = requests.get(f"{BASE_URL}/billing/model-comparison")
+    print(f"Status: {response.status_code}")
+    
+    if response.status_code == 200:
+        result = response.json()
+        comparison = result['model_comparison']['model_comparison']
+        print(f"✅ Model Comparison Retrieved!")
+        print(f"Models Compared: {len(comparison)}")
+        if result['model_compar

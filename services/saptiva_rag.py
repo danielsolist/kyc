@@ -8,6 +8,8 @@ import logging
 from typing import Dict, Any, List, Optional
 import aiohttp
 import json
+import ssl
+import certifi
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +27,12 @@ class SaptivaRAGService:
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json"
         }
+        
+        # Configurar SSL context moderno
+        self.ssl_context = ssl.create_default_context(cafile=certifi.where())
+        self.ssl_context.check_hostname = True
+        self.ssl_context.verify_mode = ssl.CERT_REQUIRED
+        self.ssl_context.minimum_version = ssl.TLSVersion.TLSv1_2
         
         # Referencia al billing service
         self.billing_service = billing_service
@@ -105,13 +113,14 @@ class SaptivaRAGService:
                 "prompt": text
             }
             
-            # Configurar SSL más permisivo para el demo
-            import ssl
-            ssl_context = ssl.create_default_context()
-            ssl_context.check_hostname = False
-            ssl_context.verify_mode = ssl.CERT_NONE
-            
-            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            # Usar SSL context moderno configurado
+            connector = aiohttp.TCPConnector(
+                ssl=self.ssl_context,
+                limit=100,
+                limit_per_host=30,
+                ttl_dns_cache=300,
+                use_dns_cache=True,
+            )
             
             async with aiohttp.ClientSession(connector=connector) as session:
                 async with session.post(
@@ -302,13 +311,14 @@ Proporciona una respuesta precisa basada en la normativa mexicana citada."""
                 "top_p": 0.9
             }
             
-            # Configurar SSL más permisivo para el demo
-            import ssl
-            ssl_context = ssl.create_default_context()
-            ssl_context.check_hostname = False
-            ssl_context.verify_mode = ssl.CERT_NONE
-            
-            connector = aiohttp.TCPConnector(ssl=ssl_context)
+            # Usar SSL context moderno configurado
+            connector = aiohttp.TCPConnector(
+                ssl=self.ssl_context,
+                limit=100,
+                limit_per_host=30,
+                ttl_dns_cache=300,
+                use_dns_cache=True,
+            )
             
             async with aiohttp.ClientSession(connector=connector) as session:
                 async with session.post(
@@ -360,7 +370,9 @@ Proporciona una respuesta precisa basada en la normativa mexicana citada."""
                         return self._simulate_cortex_response(messages)
                         
         except Exception as e:
-            logger.warning(f"⚠️ Saptiva Cortex no disponible ({str(e)}), usando simulación para demo")
+            error_msg = str(e) if str(e) else type(e).__name__
+            logger.warning(f"⚠️ Saptiva Cortex no disponible ({error_msg}), usando simulación para demo")
+            logger.debug(f"Error completo: {repr(e)}")
             return self._simulate_cortex_response(messages)
     
     def _simulate_cortex_response(self, messages: List[Dict[str, str]]) -> Dict[str, Any]:

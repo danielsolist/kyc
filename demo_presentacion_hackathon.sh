@@ -112,8 +112,12 @@ echo "🏆 De DÍAS a SEGUNDOS con Saptiva AI"
 echo "🚀 KYC Lightning Onboard - Hackathon 2024"
 echo ""
 
-# Opcional: Mostrar compliance validation
-echo "🛡️ VALIDACIÓN DE COMPLIANCE (OPCIONAL):"
-echo "curl -X POST localhost:8000/kyc/validate-compliance \\"
-echo "  -d '{\"identity_verified\": true, \"credit_score\": 720, \"sanctions_clear\": true}'"
+# Ejecutar compliance validation final
+echo "🛡️ EJECUTANDO VALIDACIÓN FINAL DE COMPLIANCE:"
+echo "============================================"
+curl -X POST "http://localhost:8000/kyc/validate-compliance" \
+  -H "Content-Type: application/json" \
+  -d '{"identity_verified": true, "credit_score": 720, "sanctions_clear": true, "documents_validated": ["INE", "CURP", "Comprobante_domicilio"]}' | python3.12 -m json.tool
+
 echo ""
+echo "✅ DEMO COMPLETADO CON VALIDACIÓN FINAL"

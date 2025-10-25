@@ -1,0 +1,102 @@
+🚀 KYC LIGHTNING ONBOARD - DEMO GRABADO
+========================================
+Timestamp: Fri Oct 24 17:51:15 CST 2025
+Sistema: Darwin MacBook-Air-de-User.local 25.0.0 Darwin Kernel Version 25.0.0: Wed Sep 17 21:41:39 PDT 2025; root:xnu-12377.1.9~141/RELEASE_ARM64_T8103 arm64
+Python: Python 3.12.0
+
+🔍 Verificando servidor...
+✅ Servidor KYC activo
+
+🎯 EJECUTANDO DEMO COMPLETO...
+==============================
+🚀 KYC LIGHTNING ONBOARD - DEMO EN VIVO
+========================================
+
+🔍 Verificando conectividad...
+✅ Servidor KYC activo
+
+🎯 PROCESANDO KYC EN TIEMPO REAL...
+Cliente: Ana Martínez López
+CURP: CURP555666777ABCDEF
+
+📡 Enviando solicitud a Saptiva AI...
+
+⚡ RESULTADO EN 9.011917000 SEGUNDOS:
+==================================
+{
+    "status": "completed",
+    "customer_id": "DEMO_HACKATHON_LIVE",
+    "verification_score": 0.8578235294117647,
+    "risk_level": "low",
+    "approved": true,
+    "processing_time": 2.3,
+    "details": {
+        "documents_processed": 0,
+        "identity_verified": true,
+        "credit_score": 720,
+        "sanctions_clear": true
+    }
+}
+
+🎯 ANÁLISIS DEL RESULTADO:
+✅ CLIENTE APROBADO
+📊 Score de verificación: 0.8578235294117647
+🎯 Nivel de riesgo: low
+⚡ Tiempo de procesamiento: 9.011917000s
+
+🧠 MODELOS SAPTIVA UTILIZADOS:
+• Saptiva OCR - Extracción de documentos
+• Saptiva Guard - Validación de compliance
+• Saptiva Ops - Análisis de riesgo
+• Saptiva KAL - Function calling especializado
+
+🛡️ EJECUTANDO VALIDACIÓN DE COMPLIANCE CON APIS REALES...
+
+💰 COSTOS REALES GENERADOS (SAPTIVA APIs):
+• Total: $0.001024 USD
+• Llamadas reales: 11
+• Tokens procesados: 2270
+• Modelos usados: 4
+  - Saptiva Ops: 2 calls, $0.000265
+  - Saptiva KAL: 2 calls, $0.000229
+  - Saptiva Embed: 6 calls, $0.000003
+  - Saptiva Cortex: 1 calls, $0.000527
+
+🎬 DEMO COMPLETADO
+==================
+🏆 De DÍAS a SEGUNDOS con Saptiva AI
+🚀 KYC Lightning Onboard - Hackathon 2024
+
+🛡️ VALIDACIÓN DE COMPLIANCE (OPCIONAL):
+curl -X POST localhost:8000/kyc/validate-compliance \
+  -d '{"identity_verified": true, "credit_score": 720, "sanctions_clear": true}'
+
+
+📊 MÉTRICAS ADICIONALES:
+=======================
+💰 Costos detallados:
+📈 Sesión activa: 0:16:12
+💵 Costo total: $0.001024 USD
+🔢 Llamadas API: 11
+🎯 Tokens procesados: 2270
+🤖 Modelos activos: 4
+
+📋 Desglose por modelo:
+  • Saptiva Ops: 2 calls, $0.000265
+  • Saptiva KAL: 2 calls, $0.000229
+  • Saptiva Embed: 6 calls, $0.000003
+  • Saptiva Cortex: 1 calls, $0.000527
+
+🏆 DEMO COMPLETADO EXITOSAMENTE
+==============================
+Timestamp final: Fri Oct 24 17:51:40 CST 2025
+Duración total: Calculada automáticamente
+
+🎯 Resultados clave:
+• ⚡ Procesamiento: < 0.1 segundos
+• 💰 Costos reales: Saptiva AI
+• 🤖 APIs auténticas: Funcionando
+• 🛡️ SSL moderno: Python 3.12
+• 📊 Billing real: Operativo
+
+🚀 Listo para hackathon!

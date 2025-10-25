@@ -68,7 +68,8 @@ class KYCOrchestrator:
             # Paso 5: Evaluación de riesgo final
             risk_assessment = await self.saptiva_service.calculate_risk_assessment(
                 identity_result,
-                credit_result
+                credit_result,
+                personal_info
             )
             
             # Paso 6: Guardar resultados en base de datos
